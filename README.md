@@ -1,6 +1,6 @@
 # APPointment
 A simple appointment scheduler using Laravel and Vue JS BY AJAYI ADEYEMI
-[mailto](mailto:aajayiadeyemi@gmail.com)
+[aajayiadeyemi@gmail.com](mailto:aajayiadeyemi@gmail.com)
 
 ## Git pull
 ` git pull https://github.com/acidicyemi/APPointment.git`
@@ -23,8 +23,6 @@ Create a databas.sqlite at database
 ## Run Create a User
 Register a User and login
 
-## Run Create a User
-Register a User and login
 
 
 
