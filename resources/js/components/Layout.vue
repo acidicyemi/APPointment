@@ -120,13 +120,12 @@ export default {
             drawer: null,
             date: new Date().toISOString().substr(0, 10),
             items: [
-                { icon: 'contacts', text: 'Show Appointments', appRoute: 'show.appointment' },
-                { icon: 'history', text: 'List Appointments', appRoute: 'show.list' },
-                { icon: 'content_copy', text: 'Duplicates', appRoute: 'show.appointment' },
+              { icon: 'history', text: 'List Appointments', appRoute: 'list.appointment' },
+                { icon: 'contacts', text: 'Create Appointments', appRoute: 'create.appointment' },
                 {
                 icon: 'keyboard_arrow_up',
                 'icon-alt': 'keyboard_arrow_down',
-                text: 'Labels', appRoute: 'show.appointment',
+                text: 'Labels', appRoute: 'list.appointment',
                 model: true,
                 children: [
                     { icon: 'add', text: 'Create label' }
@@ -134,7 +133,7 @@ export default {
                 },
                 {
                 icon: 'keyboard_arrow_up',
-                'icon-alt': 'keyboard_arrow_down', appRoute: 'show.appointment',
+                'icon-alt': 'keyboard_arrow_down', appRoute: 'list.appointment',
                 text: 'More',
                 model: false,
                 children: [
@@ -145,11 +144,11 @@ export default {
                     { text: 'Other contacts' }
                 ]
                 },
-                { icon: 'settings', text: 'Settings', appRoute: 'show.appointment' },
-                { icon: 'chat_bubble', text: 'Send feedback', appRoute: 'show.appointment' },
-                { icon: 'help', text: 'Help', appRoute: 'show.appointment' },
-                { icon: 'phonelink', text: 'App downloads', appRoute: 'show.appointment' },
-                { icon: 'keyboard', text: 'Go to the old version', appRoute: 'show.appointment' }
+                { icon: 'settings', text: 'Settings', appRoute: 'list.appointment' },
+                { icon: 'chat_bubble', text: 'Send feedback', appRoute: 'list.appointment' },
+                { icon: 'help', text: 'Help', appRoute: 'list.appointment' },
+                { icon: 'phonelink', text: 'App downloads', appRoute: 'list.appointment' },
+                { icon: 'keyboard', text: 'Go to the old version', appRoute: 'list.appointment' }
             ]
         }
     },

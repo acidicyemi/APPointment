@@ -216,7 +216,7 @@ import {mapGetters} from 'vuex'
       end: '2020-01-06',
       today: '2019-02-16'
     }),
-    created() {
+    beforeCreate() {
         this.$store.dispatch('getAppointmentsList');
         
     },

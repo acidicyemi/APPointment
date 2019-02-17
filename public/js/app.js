@@ -1989,7 +1989,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       today: '2019-02-16'
     };
   },
-  created: function created() {
+  beforeCreate: function beforeCreate() {
     this.$store.dispatch('getAppointmentsList');
   },
   computed: _objectSpread({}, Object(vuex__WEBPACK_IMPORTED_MODULE_1__["mapGetters"])(['appointments']), {
@@ -2261,22 +2261,18 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       drawer: null,
       date: new Date().toISOString().substr(0, 10),
       items: [{
-        icon: 'contacts',
-        text: 'Show Appointments',
-        appRoute: 'show.appointment'
-      }, {
         icon: 'history',
         text: 'List Appointments',
-        appRoute: 'show.list'
+        appRoute: 'list.appointment'
       }, {
-        icon: 'content_copy',
-        text: 'Duplicates',
-        appRoute: 'show.appointment'
+        icon: 'contacts',
+        text: 'Create Appointments',
+        appRoute: 'create.appointment'
       }, {
         icon: 'keyboard_arrow_up',
         'icon-alt': 'keyboard_arrow_down',
         text: 'Labels',
-        appRoute: 'show.appointment',
+        appRoute: 'list.appointment',
         model: true,
         children: [{
           icon: 'add',
@@ -2285,7 +2281,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         icon: 'keyboard_arrow_up',
         'icon-alt': 'keyboard_arrow_down',
-        appRoute: 'show.appointment',
+        appRoute: 'list.appointment',
         text: 'More',
         model: false,
         children: [{
@@ -2302,23 +2298,23 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       }, {
         icon: 'settings',
         text: 'Settings',
-        appRoute: 'show.appointment'
+        appRoute: 'list.appointment'
       }, {
         icon: 'chat_bubble',
         text: 'Send feedback',
-        appRoute: 'show.appointment'
+        appRoute: 'list.appointment'
       }, {
         icon: 'help',
         text: 'Help',
-        appRoute: 'show.appointment'
+        appRoute: 'list.appointment'
       }, {
         icon: 'phonelink',
         text: 'App downloads',
-        appRoute: 'show.appointment'
+        appRoute: 'list.appointment'
       }, {
         icon: 'keyboard',
         text: 'Go to the old version',
-        appRoute: 'show.appointment'
+        appRoute: 'list.appointment'
       }]
     };
   },
@@ -58533,12 +58529,12 @@ __webpack_require__.r(__webpack_exports__);
 
 var routes = [{
   path: '/',
-  name: 'show.appointment',
-  component: _components_CalenderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
-}, {
-  path: '/list',
-  name: 'show.list',
+  name: 'list.appointment',
   component: _components_DataTable_vue__WEBPACK_IMPORTED_MODULE_1__["default"]
+}, {
+  path: '/create',
+  name: 'create.appointment',
+  component: _components_CalenderComponent_vue__WEBPACK_IMPORTED_MODULE_0__["default"]
 }, {
   path: '*',
   component: {

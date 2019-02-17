@@ -5,13 +5,13 @@ import AppDatable from '../components/DataTable.vue'
 export const routes = [
     {
         path: '/',
-        name: 'show.appointment',
-        component: AppCalender
+        name: 'list.appointment',
+        component: AppDatable
     },
     {
-        path: '/list',
-        name: 'show.list',
-        component: AppDatable
+        path: '/create',
+        name: 'create.appointment',
+        component: AppCalender
     },
     {
         path: '*',
