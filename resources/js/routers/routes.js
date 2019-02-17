@@ -1,6 +1,6 @@
 
 import AppCalender from '../components/CalenderComponent.vue'
-import AppDatable from '../components/Test.vue'
+import AppDatable from '../components/DataTable.vue'
 
 export const routes = [
     {

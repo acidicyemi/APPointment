@@ -41,11 +41,8 @@ import {mapGetters} from 'vuex'
             'appointments'
         ]),
     },
-    created() {
-        console.log(this.appointments.data);
-        
+    created() {        
         this.$store.dispatch('getAppointmentsList')
-        
     },
   }
 </script>

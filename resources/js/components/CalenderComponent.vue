@@ -1,5 +1,5 @@
 <template>
-  <v-layout>
+  <v-layout wrap>
     <v-flex
     md-12
       xs12>
@@ -69,8 +69,12 @@
         </v-calendar>
       </v-sheet>
     </v-flex>
-    <v-flex>
-    <v-btn @click="$refs.calendar.prev()">
+     <v-flex
+      sm6
+      xs12
+      class="text-sm-left text-xs-center"
+    >
+      <v-btn @click="$refs.calendar.prev()">
         <v-icon
           dark
           left
@@ -81,7 +85,7 @@
       </v-btn>
     </v-flex>
     <v-flex
-      sm4
+      sm6
       xs12
       class="text-sm-right text-xs-center"
     >
@@ -95,7 +99,6 @@
         </v-icon>
       </v-btn>
     </v-flex>
-
     <!-- dialog -->
      <v-btn
       fab
@@ -184,6 +187,7 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+
   </v-layout>
 </template>
 
@@ -212,19 +216,22 @@ import {mapGetters} from 'vuex'
       end: '2020-01-06',
       today: '2019-02-16'
     }),
+    created() {
+        this.$store.dispatch('getAppointmentsList');
+        
+    },
     computed: {
         ...mapGetters([
             'appointments'
         ]),
-      // convert the list of events into a map of lists keyed by date
+      // convert the list of appointments into a map of lists keyed by date
       eventsMap () {
-        const map = {}        
+        const map = {}   
+        console.log(this.appointments.data, 'i');
+             
         this.appointments.data.forEach(e => (map[e.date] = map[e.date] || []).push(e))        
         return map
       },
-    },
-    created() {
-        this.$store.dispatch('getAppointmentsList')
     },
     methods: {
       reset() {
@@ -258,15 +265,12 @@ import {mapGetters} from 'vuex'
                         });
         },
         initUpdate(payload) {
-          console.log(payload);
-            this.appointmentIndex = payload - 1 // use in the if() statment for saving
-            // console.log(this.$store.getters.appointments[this.calenderIndex]);
+            this.appointmentIndex = payload - 1 ;
             this.appointment = Object.assign({}, this.$store.getters.appointments.data[this.appointmentIndex])
             console.log(this.appointment);
             this.dialog = true
         },
         updateItem () {
-          alert('hi')
             axios.put(`update-appointments/${this.appointment.id}`, {
                 title: this.appointment.title,
                 description: this.appointment.description,
@@ -284,19 +288,19 @@ import {mapGetters} from 'vuex'
                 
         },
 
-        deleteItem (event) {
-            axios.delete(`update-appointments/${event.appointment.id}`)
-                .then( (response) => {
+        // deleteItem (event) {
+        //     axios.delete(`update-appointments/${event.appointment.id}`)
+        //         .then( (response) => {
                   
-                    // handle success
-                    this.$store.dispatch('getAppointmentsList')
-                }).catch(function (error) {
-                    // handle error
-                    console.log(error);
-                }).then( () => {
+        //             // handle success
+        //             this.$store.dispatch('getAppointmentsList')
+        //         }).catch(function (error) {
+        //             // handle error
+        //             console.log(error);
+        //         }).then( () => {
                   
-                    });
-        },
+        //             });
+        // },
         
     }
   }
