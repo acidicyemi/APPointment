@@ -2,7 +2,7 @@
   <v-layout wrap>
     <v-flex
     md-12
-      xs12>
+      xs12 class="mb-3">
       <v-sheet height="500">
         <v-calendar
           ref="calendar"
@@ -17,7 +17,7 @@
           >
             <template v-for="event in eventsMap[date]">
               <v-menu
-                :key="event.title"
+                :key="event.index"
                 v-model="event.open"
                 full-width
                 offset-x
@@ -226,9 +226,7 @@ import {mapGetters} from 'vuex'
         ]),
       // convert the list of appointments into a map of lists keyed by date
       eventsMap () {
-        const map = {}   
-        console.log(this.appointments.data, 'i');
-             
+        const map = {}
         this.appointments.data.forEach(e => (map[e.date] = map[e.date] || []).push(e))        
         return map
       },

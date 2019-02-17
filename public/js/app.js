@@ -1996,7 +1996,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     // convert the list of appointments into a map of lists keyed by date
     eventsMap: function eventsMap() {
       var map = {};
-      console.log(this.appointments.data, 'i');
       this.appointments.data.forEach(function (e) {
         return (map[e.date] = map[e.date] || []).push(e);
       });
@@ -15763,7 +15762,7 @@ var render = function() {
     [
       _c(
         "v-flex",
-        { attrs: { "md-12": "", xs12: "" } },
+        { staticClass: "mb-3", attrs: { "md-12": "", xs12: "" } },
         [
           _c(
             "v-sheet",
@@ -15783,7 +15782,7 @@ var render = function() {
                             _c(
                               "v-menu",
                               {
-                                key: event.title,
+                                key: event.index,
                                 attrs: { "full-width": "", "offset-x": "" },
                                 model: {
                                   value: event.open,
