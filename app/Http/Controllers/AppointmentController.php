@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Appointment;
 use Illuminate\Http\Request;
+use App\Http\Resources\Appointments as AppointmentsResource;
+use App\Services\AppointmentServices;
 
 class AppointmentController extends Controller
 {
@@ -12,20 +14,11 @@ class AppointmentController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(AppointmentServices $appointmentServices)
     {
-        //
+        return AppointmentsResource::collection($appointmentServices->getAllUserAppointments());
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
 
     /**
      * Store a newly created resource in storage.
@@ -33,31 +26,21 @@ class AppointmentController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(
+        Request $request, 
+        AppointmentServices $appointmentServices
+        )
     {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
+        $createAppointment = $appointmentServices->createAppointment(
+                                                    $request->title,
+                                                    $request->description,
+                                                    $request->date
+                                                );
+        
+        return response()->json([
+            'message' => 'Appointment saved successfully',
+            'id' => $createAppointment->id,
+        ], 201);
     }
 
     /**
@@ -67,9 +50,17 @@ class AppointmentController extends Controller
      * @param  \App\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Appointment $appointment)
+    public function update(
+        Request $request, 
+        Appointment $appointment,
+        AppointmentServices $appointmentServices)
     {
-        //
+        $appointment->title = $request->title;
+        $appointment->description = $request->description;
+        $appointment->date = $request->date;
+        $appointment->save();
+        return $appointment;
+
     }
 
     /**

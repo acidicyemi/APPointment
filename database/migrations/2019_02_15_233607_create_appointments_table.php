@@ -18,6 +18,8 @@ class CreateAppointmentsTable extends Migration
             $table->unsignedInteger('user_id');
             $table->string('title');
             $table->string('description')->nullable();
+            $table->string('date')->nullable();
+            $table->string('time')->nullable();
             $table->boolean('status')->default(false);
 
             $table->foreign('user_id')->references('id')->on('users');

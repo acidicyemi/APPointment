@@ -10,7 +10,19 @@
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/', function () {
-    return view('welcome');
+Auth::routes();
+Route::group(['middleware' => ['auth']], function () {
+    
+    Route::get('/', function () {
+        return view('appiontment.layout');
+    });
+    
+    Route::get('/list-appointments', 'AppointmentController@index')->name('index.appointments');
+    Route::post('/list-appointments', 'AppointmentController@store')->name('store.appointments');
+    Route::put('/update-appointments/{appointment}', 'AppointmentController@update')->name('update.appointments');
+    Route::get('{any}', function () {
+        return view('appiontment.layout');
+    })->where('any', '.*');
 });
+
+
